@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { StyleSheet, View, FlatList, Button,Image } from "react-native";
+import { StyleSheet, View, FlatList, Button, Image } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
 import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput";
@@ -29,31 +30,38 @@ export default function App() {
     });
   }
   return (
-    <View style={styles.appConatiner}>
-      <Button title="add new goal" color="red" onPress={startaddGoalHandler} />
-      {/* input area */}
-      <GoalInput
-        visible={modalIsVisible}
-        onAddGoal={addGoalHandler}
-        onCancel={endaddGoalHandler}
-      />
-      {/* lists of goals rendered */}
-      <View style={styles.goalsContainer}>
-        <FlatList
-          data={courseGoals}
-          renderItem={(itemData) => {
-            return (
-              <GoalItem
-                text={itemData.item.text}
-                onDeleteItem={deleteGoalHandler}
-                id={itemData.item.id}
-              />
-            );
-          }}
-          alwaysBounceVertical={false}
+    <>
+      <StatusBar style="dark"/>
+      <View style={styles.appConatiner}>
+        <Button 
+          title="add new goal"
+          color="red"
+          onPress={startaddGoalHandler}
         />
+        {/* input area */}
+        <GoalInput
+          visible={modalIsVisible}
+          onAddGoal={addGoalHandler}
+          onCancel={endaddGoalHandler}
+        />
+        {/* lists of goals rendered */}
+        <View style={styles.goalsContainer}>
+          <FlatList
+            data={courseGoals}
+            renderItem={(itemData) => {
+              return (
+                <GoalItem
+                  text={itemData.item.text}
+                  onDeleteItem={deleteGoalHandler}
+                  id={itemData.item.id}
+                />
+              );
+            }}
+            alwaysBounceVertical={false}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
@@ -66,5 +74,6 @@ const styles = StyleSheet.create({
 
   goalsContainer: {
     flex: 5,
+  
   },
 });
