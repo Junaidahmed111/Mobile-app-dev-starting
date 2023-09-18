@@ -38,7 +38,6 @@ export default function App() {
           color="red"
           onPress={startaddGoalHandler}
         />
-        {/* input area */}
         <GoalInput
           visible={modalIsVisible}
           onAddGoal={addGoalHandler}
