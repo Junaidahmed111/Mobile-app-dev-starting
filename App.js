@@ -44,6 +44,7 @@ export default function App() {
           onAddGoal={addGoalHandler}
           onCancel={endaddGoalHandler}
         />
+        {/* lists of goals rendered */}
         <View style={styles.goalsContainer}>
           <FlatList
             data={courseGoals}
